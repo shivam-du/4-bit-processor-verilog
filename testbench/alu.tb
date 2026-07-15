@@ -1,0 +1,62 @@
+`timescale 1ns / 1ps
+
+module alu_tb;
+
+reg [3:0] A;
+reg [3:0] B;
+reg [3:0] ALUOp;
+
+wire [3:0] Result;
+wire Carry;
+wire Zero;
+
+alu DUT (
+    .A(A),
+    .B(B),
+    .ALUOp(ALUOp),
+    .Result(Result),
+    .Carry(Carry),
+    .Zero(Zero)
+);
+
+initial begin
+
+    // ADD
+    A = 4'd5; B = 4'd3; ALUOp = 4'b0000; #10;
+
+    // SUB
+    A = 4'd5; B = 4'd3; ALUOp = 4'b0001; #10;
+
+    // AND
+    A = 4'b1100; B = 4'b1010; ALUOp = 4'b0010; #10;
+
+    // OR
+    A = 4'b1100; B = 4'b1010; ALUOp = 4'b0011; #10;
+
+    // XOR
+    A = 4'b1100; B = 4'b1010; ALUOp = 4'b0100; #10;
+
+    // MOV
+    A = 4'b0000; B = 4'd7; ALUOp = 4'b0101; #10;
+
+    // INC
+    A = 4'd8; B = 4'b0000; ALUOp = 4'b0110; #10;
+
+    // DEC
+    A = 4'd8; B = 4'b0000; ALUOp = 4'b0111; #10;
+
+    // NOT
+    A = 4'b1010; B = 4'b0000; ALUOp = 4'b1000; #10;
+    
+    // Zero flag test
+    A = 4'd3; B = 4'd3;  ALUOp = 4'b0001; #10; 
+    
+    // Carry flag test
+    A = 4'd15; B = 4'd1;   ALUOp = 4'b0000; #10;
+    
+
+    $finish;
+
+end
+
+endmodule
