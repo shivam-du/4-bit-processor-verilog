@@ -34,7 +34,7 @@ The project was developed as a **self-directed learning project** to gain practi
 
 ## Processor Datapath Architecture
 
-![Processor Datapath](images/cpu_datapath_detailed_flowchart (1).png)
+![Processor Datapath](images/cpu_datapath_detailed_flowchart.png.png)
 
 The processor consists of the following major modules:
 
